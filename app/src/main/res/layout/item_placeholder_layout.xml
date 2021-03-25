@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="?recyclerViewItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/imagePlaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero_dp"
+            android:background="@color/shimmer_background"
+            app:layout_constraintDimensionRatio="@string/item_image_ratio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/videoTitlePlaceholder"
+            android:background="@color/shimmer_background"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/margin_24"
+            android:layout_margin="@dimen/margin_8"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imagePlaceholder"
+            app:layout_constraintWidth_percent=".9" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:src="@drawable/ic_more_vert_24dp"
+            android:foregroundTint="@color/shimmer_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/videoTitlePlaceholder"
+            app:layout_constraintTop_toTopOf="@id/videoTitlePlaceholder" />
+
+        <View
+            android:id="@+id/channelTitlePlaceholder"
+            android:background="@color/shimmer_background"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/margin_16"
+            android:layout_margin="@dimen/margin_8"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/videoTitlePlaceholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent=".9" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

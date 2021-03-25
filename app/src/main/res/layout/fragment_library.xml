@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?colorSurface">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:title="@string/library"
+                app:titleTextAppearance="?textStyleSubtitle1" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnFavourites"
+            android:transitionName="@string/library_menu_favourite"
+            app:layout_constraintWidth_percent=".45"
+            style="?cardFlatBorderStyle"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@id/appbarLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnWatchLater">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_background_gradient"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tint="?colorPrimary"
+                    android:src="@drawable/ic_favorite_24dp"
+                    android:layout_margin="@dimen/margin_16" />
+
+                <TextView
+                    style="?textColoredStyleHeadline1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:layout_marginBottom="@dimen/margin_16"
+                    android:text="@string/library_menu_favourite" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnWatchLater"
+            android:transitionName="@string/library_menu_watch_later"
+            app:layout_constraintWidth_percent=".45"
+            style="?cardFlatBorderStyle"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/btnFavourites"
+            app:layout_constraintTop_toTopOf="@id/btnFavourites"
+            app:layout_constraintBottom_toBottomOf="@id/btnFavourites"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_background_gradient"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tint="?colorPrimary"
+                    android:src="@drawable/ic_watch_later_24dp"
+                    android:layout_margin="@dimen/margin_16" />
+
+                <TextView
+                    style="?textColoredStyleHeadline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_16"
+                    android:layout_marginBottom="@dimen/margin_16"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="@string/library_menu_watch_later" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

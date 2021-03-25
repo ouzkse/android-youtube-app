@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_8">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="?textStyleHeadline1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:gravity="start"
+                android:text="@string/settings" />
+
+            <View style="?viewDivider" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchTheme"
+                style="?switchStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                android:text="@string/dark_mode"
+                tools:checked="true" />
+
+            <View style="?viewDivider" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClearSearchHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?textButtonStyle"
+                android:paddingHorizontal="@dimen/margin_16"
+                android:text="@string/clear_search_history"
+                android:textAlignment="textStart" />
+
+            <TextView
+                style="?textColoredStyleCaption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:text="@string/delete_search_history_warning_text" />
+
+            <View style="?viewDivider" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </FrameLayout>
+</layout>

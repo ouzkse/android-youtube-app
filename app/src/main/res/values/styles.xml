@@ -1,0 +1,204 @@
+<resources>
+
+    <style name="AppTheme.Light" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/red_500</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimaryVariant">@color/red_700</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSecondary">@color/grey_500</item>
+        <item name="colorSecondaryVariant">@color/grey_700</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <item name="actionBarSize">@dimen/appbar_size</item>
+        <item name="actionBarTabTextStyle">?textStyleCaption</item>
+
+        <item name="buttonStyle">@style/AppTheme.ButtonStyle</item>
+        <item name="textButtonStyle">@style/AppTheme.TextButtonStyle</item>
+        <item name="outlinedButtonStyle">@style/AppTheme.OutlinedButtonStyle</item>
+        <item name="textAppearanceButton">?textStyleSubtitle1</item>
+
+        <item name="textStyleHeadline1">@style/AppTheme.TextAppearance.Headline1</item>
+        <item name="textStyleHeadline2">@style/AppTheme.TextAppearance.Headline2</item>
+        <item name="textStyleSubtitle1">@style/AppTheme.TextAppearance.Subtitle1</item>
+        <item name="textStyleSubtitle2">@style/AppTheme.TextAppearance.Subtitle2</item>
+        <item name="textStyleCaption">@style/AppTheme.TextAppearance.Caption</item>
+
+        <item name="textColoredStyleHeadline1">@style/AppTheme.TextAppearance.Headline1.Colored
+        </item>
+        <item name="textColoredStyleHeadline2">@style/AppTheme.TextAppearance.Headline2.Colored
+        </item>
+        <item name="textColoredStyleSubtitle1">@style/AppTheme.TextAppearance.Subtitle1.Colored
+        </item>
+        <item name="textColoredStyleSubtitle2">@style/AppTheme.TextAppearance.Subtitle2.Colored
+        </item>
+        <item name="textColoredStyleCaption">@style/AppTheme.TextAppearance.Caption.Colored</item>
+
+        <item name="cardFlatStyle">@style/AppTheme.CardAppearance.NoElevation</item>
+        <item name="cardFlatBorderStyle">@style/AppTheme.CardAppearance.NoElevation.Stroke</item>
+        <item name="cardStyle">@style/AppTheme.CardAppearance.Default</item>
+
+        <item name="viewDivider">@style/AppTheme.View.Divider</item>
+        <item name="switchStyle">@style/AppTheme.Switch</item>
+        <item name="bottomNavigationStyle">@style/AppTheme.BottomNavigationBar</item>
+        <item name="textInputLayoutStyle">@style/AppTheme.TextInputLayout</item>
+        <item name="recyclerViewItemStyle">@style/AppTheme.RecyclerViewItem</item>
+
+        <item name="android:textAppearanceLargePopupMenu">@style/AppTheme.PopupMenuLarge</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/AppTheme.PopupMenuSmall</item>
+
+    </style>
+
+    <style name="AppTheme.DayNight" parent="AppTheme.Light" />
+
+    <!-- Splash Screen -->
+
+    <style name="AppTheme.SplashScreen" parent="AppTheme.DayNight">
+        <item name="android:windowBackground">@drawable/layout_splash_screen</item>
+    </style>
+
+    <!-- Button Styles -->
+
+    <style name="AppTheme.ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:insetTop">@dimen/margin_2</item>
+        <item name="android:insetBottom">@dimen/margin_2</item>
+    </style>
+
+    <style name="AppTheme.TextButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:insetBottom">@dimen/zero_dp</item>
+        <item name="android:insetTop">@dimen/zero_dp</item>
+        <item name="android:insetLeft">@dimen/zero_dp</item>
+        <item name="android:insetRight">@dimen/zero_dp</item>
+    </style>
+
+    <style name="AppTheme.OutlinedButtonStyle" parent="AppTheme.TextButtonStyle">
+        <item name="strokeWidth">@dimen/one_dp</item>
+        <item name="strokeColor">?colorPrimary</item>
+    </style>
+
+    <!-- Text Styles -->
+
+    <style name="AppTheme.TextAppearance.Headline1" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Headline2" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Caption" parent="TextAppearance.AppCompat.Caption">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Headline1.Colored" parent="AppTheme.TextAppearance.Headline1">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Headline2.Colored" parent="AppTheme.TextAppearance.Headline2">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Subtitle1.Colored" parent="AppTheme.TextAppearance.Subtitle1">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Subtitle2.Colored" parent="AppTheme.TextAppearance.Subtitle2">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Caption.Colored" parent="AppTheme.TextAppearance.Caption">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <!-- Card Styles -->
+
+    <style name="AppTheme.Card.Base" parent="Widget.MaterialComponents.CardView">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:longClickable">true</item>
+    </style>
+
+    <style name="AppTheme.CardAppearance.NoElevation" parent="AppTheme.Card.Base">
+        <item name="cardElevation">@dimen/zero_dp</item>
+        <item name="cardCornerRadius">@dimen/zero_dp</item>
+        <item name="cardMaxElevation">@dimen/zero_dp</item>
+    </style>
+
+    <style name="AppTheme.CardAppearance.NoElevation.Stroke" parent="AppTheme.CardAppearance.NoElevation">
+        <item name="strokeWidth">@dimen/one_dp</item>
+        <item name="strokeColor">?colorPrimary</item>
+        <item name="cardCornerRadius">@dimen/margin_4</item>
+    </style>
+
+    <style name="AppTheme.CardAppearance.Default" parent="AppTheme.Card.Base">
+        <item name="cardMaxElevation">@dimen/margin_8</item>
+        <item name="cardElevation">@dimen/margin_2</item>
+        <item name="cardCornerRadius">@dimen/margin_4</item>
+    </style>
+
+    <!-- View Divider -->
+
+    <style name="AppTheme.View.Divider" parent="">
+        <item name="android:layout_height">@dimen/one_dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">?colorControlActivated</item>
+        <item name="android:layout_marginLeft">@dimen/margin_16</item>
+    </style>
+
+    <!-- Switch -->
+    <style name="AppTheme.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="useMaterialThemeColors">true</item>
+        <item name="android:textAppearance">?textStyleSubtitle1</item>
+    </style>
+
+    <!-- Bottom NavBar -->
+
+    <style name="AppTheme.BottomNavigationBar" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="labelVisibilityMode">selected</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="layout_anchorGravity">bottom</item>
+        <item name="android:layout_height">?actionBarSize</item>
+        <item name="itemTextAppearanceActive">?textStyleCaption</item>
+        <item name="itemTextAppearanceInactive">?textStyleCaption</item>
+    </style>
+
+    <!-- Edit Text -->
+
+    <style name="AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="boxCornerRadiusTopStart">@dimen/zero_dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/zero_dp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/zero_dp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/zero_dp</item>
+        <item name="boxStrokeWidth">@dimen/zero_dp</item>
+        <item name="boxStrokeWidthFocused">@dimen/one_dp</item>
+    </style>
+
+    <style name="AppTheme.RecyclerViewItem" parent="">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="AppTheme.PopupMenuLarge" parent="TextAppearance.AppCompat.Light.Widget.PopupMenu.Large">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="AppTheme.PopupMenuSmall" parent="TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+</resources>

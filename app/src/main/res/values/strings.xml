@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">YouTube</string>
+    <string name="library">Library</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="main_page_fragment">Main Page Fragment</string>
+    <string name="search_page_fragment">Search Page Fragment</string>
+    <string name="library_page_fragment">Library Page Fragment</string>
+    <string name="settings">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="item_1">Item 1</string>
+    <string name="item_2">Item 2</string>
+    <string name="item_3">Item 3</string>
+    <string name="sample_long_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus placerat nec enim nec fermentum. Maecenas pellentesque iaculis magna, at molestie velit. Pellentesque iaculis finibus justo, et dictum risus pharetra sed.</string>
+    <string name="clear_search_history">Clear Search History</string>
+    <string name="delete_search_history_warning_text">This will permanently delete all of your
+        search history.</string>
+    <string name="item_image_ratio">16:9</string>
+    <string name="square_ratio">1:1</string>
+    <string name="remove_from_favourites">Remove from favourites</string>
+    <string name="remove_from_watch_later">Remove from watch later</string>
+    <string name="add_to_favourites">Add to favourites</string>
+    <string name="add_to_watch_later">Add to watch later</string>
+
+    <string name="video_item_transition_name">video_item_%1$s</string>
+    <string name="video_detail_transition_name">video_detail</string>
+
+    <string name="library_menu_item_transition_name">library_menu_item_%1$s</string>
+    <string name="library_detail_transition_name">library_detail</string>
+
+    <string name="library_menu_favourite">Favourites</string>
+    <string name="library_menu_watch_later">Watch later</string>
+
+    <string-array name="library_menu">
+        <item>@string/library_menu_favourite</item>
+        <item>@string/library_menu_watch_later</item>
+    </string-array>
+
+</resources>

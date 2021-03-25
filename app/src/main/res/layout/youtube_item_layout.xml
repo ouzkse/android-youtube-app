@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.app.ouzkse.youtube.ui.common.YouTubeItemOnClickListener" />
+
+        <variable
+            name="item"
+            type="android.app.ouzkse.youtube.data.model.Item" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="?recyclerViewItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:transitionName="@{@string/video_item_transition_name(item.id.videoId)}"
+        android:onClick="@{(rootView) -> clickListener.onItemClick(rootView, item)}">
+
+        <ImageView
+            android:id="@+id/imageYoutubeItem"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero_dp"
+            image="@{item}"
+            app:layout_constraintDimensionRatio="@string/item_image_ratio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/videoTitle"
+            style="?textStyleSubtitle1"
+            android:text="@{item.snippet.title}"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            android:lines="2"
+            android:maxLines="2"
+            android:minLines="1"
+            android:ellipsize="end"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageYoutubeItem"
+            app:layout_constraintWidth_percent=".9"
+            tools:text="@string/appbar_scrolling_view_behavior" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/optionsMenu"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/margin_8"
+            app:layout_constraintDimensionRatio="@string/square_ratio"
+            android:src="@drawable/ic_more_vert_24dp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/videoTitle"
+            app:layout_constraintTop_toTopOf="@id/videoTitle"
+            android:onClick="@{(rootView) -> clickListener.onItemOptionMenuClick(rootView, item)}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/channelTitle"
+            style="?textStyleCaption"
+            android:text="@{item.snippet.channelTitle}"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            tools:text="@string/main_page_fragment"
+            android:singleLine="true"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/videoTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/videoTitle"
+            app:layout_constraintWidth_percent=".9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

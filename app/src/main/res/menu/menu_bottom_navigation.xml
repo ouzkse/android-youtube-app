@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_navigation_graph"
+        android:icon="@drawable/ic_home_24dp"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/search_navigation_graph"
+        android:icon="@drawable/ic_search_24dp"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/library_navigation_graph"
+        android:icon="@drawable/ic_library_24dp"
+        android:title="@string/library" />
+</menu>

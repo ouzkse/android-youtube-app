@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/library_navigation_graph"
+    app:startDestination="@id/libraryFragment">
+
+    <fragment
+        android:id="@+id/libraryFragment"
+        android:name="android.app.ouzkse.youtube.ui.library.LibraryFragment"
+        android:label="LibraryFragment">
+        <action
+            android:id="@+id/action_libraryFragment_to_libraryDetailFragment"
+            app:destination="@id/libraryDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/libraryDetailFragment"
+        android:name="android.app.ouzkse.youtube.ui.librarydetail.LibraryDetailFragment"
+        android:label="LibraryDetailFragment">
+        <argument
+            android:name="libraryItemArg"
+            app:argType="android.app.ouzkse.youtube.ui.library.LibraryMenuItemModel" />
+        <action
+            android:id="@+id/action_libraryDetailFragment_to_detailFragment3"
+            app:destination="@id/detailFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment3"
+        android:name="android.app.ouzkse.youtube.ui.detail.DetailFragment"
+        android:label="DetailFragment">
+        <argument
+            android:name="ItemArg"
+            app:argType="android.app.ouzkse.youtube.data.model.Item" />
+    </fragment>
+</navigation>

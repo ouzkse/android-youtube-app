@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/add_watch_later"
+        android:visible="false"
+        android:title="@string/add_to_watch_later" />
+
+    <item
+        android:id="@+id/remove_watch_later"
+        android:visible="false"
+        android:title="@string/remove_from_watch_later" />
+
+    <item
+        android:id="@+id/add_favourite"
+        android:visible="false"
+        android:title="@string/add_to_favourites" />
+
+
+    <item
+        android:id="@+id/remove_favourite"
+        android:visible="false"
+        android:title="@string/remove_from_favourites" />
+</menu>

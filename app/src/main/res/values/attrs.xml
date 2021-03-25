@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="buttonStyle" format="reference" />
+    <attr name="outlinedButtonStyle" format="reference" />
+    <attr name="textButtonStyle" format="reference" />
+    <attr name="textAppearanceButton" format="reference" />
+
+    <attr name="textStyleHeadline1" format="reference" />
+    <attr name="textStyleHeadline2" format="reference" />
+    <attr name="textStyleSubtitle1" format="reference" />
+    <attr name="textStyleSubtitle2" format="reference" />
+    <attr name="textStyleCaption" format="reference" />
+    <attr name="textColoredStyleHeadline1" format="reference" />
+    <attr name="textColoredStyleHeadline2" format="reference" />
+    <attr name="textColoredStyleSubtitle1" format="reference" />
+    <attr name="textColoredStyleSubtitle2" format="reference" />
+    <attr name="textColoredStyleCaption" format="reference" />
+
+    <attr name="cardFlatStyle" format="reference" />
+    <attr name="cardFlatBorderStyle" format="reference" />
+    <attr name="cardStyle" format="reference" />
+
+    <attr name="viewDivider" format="reference" />
+    <attr name="switchStyle" format="reference" />
+    <attr name="bottomNavigationStyle" format="reference" />
+    <attr name="textInputLayoutStyle" format="reference" />
+    <attr name="recyclerViewItemStyle" format="reference" />
+</resources>

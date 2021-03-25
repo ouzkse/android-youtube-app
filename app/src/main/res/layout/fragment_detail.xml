@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="android.app.ouzkse.youtube.ui.detail.DetailViewModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDetail"
+        style="?cardFlatStyle"
+        android:clickable="false"
+        android:focusable="false"
+        android:transitionName="@string/video_detail_transition_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/player"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero_dp"
+                app:autoPlay="false"
+                app:showVideoDuration="true"
+                app:showYouTubeButton="false"
+                app:showSeekBar="true"
+                app:layout_constraintDimensionRatio="@string/item_image_ratio"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                app:fabSize="mini"
+                app:borderWidth="@dimen/zero_dp"
+                android:backgroundTint="?colorPrimary"
+                android:src="@drawable/ic_arrow_down"
+                android:scaleType="center"
+                app:layout_constraintStart_toStartOf="@id/player"
+                app:layout_constraintTop_toTopOf="@id/player"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textVideoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?textStyleSubtitle1"
+                android:layout_margin="@dimen/margin_16"
+                android:text="@{viewModel.item.snippet.title}"
+                app:layout_constraintTop_toBottomOf="@id/player"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textChannelTitle"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="wrap_content"
+                style="?textStyleCaption"
+                android:layout_marginVertical="@dimen/margin_8"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                android:text="@{viewModel.item.snippet.channelTitle}"
+                app:layout_constraintWidth_percent=".5"
+                app:layout_constraintTop_toBottomOf="@id/textVideoTitle"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageFavourite"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="@dimen/zero_dp"
+                app:layout_constraintWidth_percent=".08"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                app:layout_constraintHorizontal_bias="1"
+                drawableTint="@{viewModel.item.favourite}"
+                android:onClick="@{() -> viewModel.changeFavouriteStatus()}"
+                android:src="@drawable/ic_favorite_24dp"
+                app:layout_constraintDimensionRatio="@string/square_ratio"
+                app:layout_constraintTop_toTopOf="@id/imageWatchLater"
+                app:layout_constraintEnd_toStartOf="@id/imageWatchLater"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imageWatchLater"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="@dimen/zero_dp"
+                drawableTint="@{viewModel.item.watchLater}"
+                android:onClick="@{() -> viewModel.changeWatchLaterStatus()}"
+                app:layout_constraintWidth_percent=".08"
+                app:layout_constraintHorizontal_bias="1"
+                android:src="@drawable/ic_watch_later_24dp"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintDimensionRatio="@string/square_ratio"
+                app:layout_constraintTop_toTopOf="@id/textChannelTitle"
+                app:layout_constraintEnd_toEndOf="@id/textVideoTitle"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?textStyleCaption"
+                android:text="@{viewModel.item.snippet.description}"
+                android:layout_margin="@dimen/margin_16"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintTop_toBottomOf="@id/imageWatchLater"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
