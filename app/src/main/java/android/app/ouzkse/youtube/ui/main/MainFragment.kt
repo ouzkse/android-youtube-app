@@ -124,7 +124,7 @@ class MainFragment : Fragment(), YouTubeItemOnClickListener {
                     viewModel.changeFavouriteStatus(item)
                 }
             }
-            Snackbar.make(binding.root, menuItem.title, Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, menuItem.title ?: "", Snackbar.LENGTH_SHORT).show()
             true
         }
         popupMenu.show()

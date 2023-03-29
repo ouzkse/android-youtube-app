@@ -5,14 +5,15 @@ import android.app.ouzkse.youtube.data.base.BaseViewModel
 import android.app.ouzkse.youtube.data.model.Item
 import android.app.ouzkse.youtube.data.model.SearchHistoryModel
 import android.app.ouzkse.youtube.data.repository.YouTubeRepository
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
-import kotlinx.coroutines.flow.collect
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SearchViewModel @ViewModelInject constructor(
+@HiltViewModel
+class SearchViewModel @Inject constructor(
     private val repository: YouTubeRepository
 ) : BaseViewModel() {
 

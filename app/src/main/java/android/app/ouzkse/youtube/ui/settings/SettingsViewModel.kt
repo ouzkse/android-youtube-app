@@ -2,10 +2,13 @@ package android.app.ouzkse.youtube.ui.settings
 
 import android.app.ouzkse.youtube.data.base.BaseViewModel
 import android.app.ouzkse.youtube.data.repository.YouTubeRepository
-import androidx.hilt.lifecycle.ViewModelInject
-import kotlinx.coroutines.launch
+import dagger.hilt.android.lifecycle.HiltViewModel
 
-class SettingsViewModel @ViewModelInject constructor(
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class SettingsViewModel @Inject constructor(
     private val repository: YouTubeRepository
 ) : BaseViewModel() {
 

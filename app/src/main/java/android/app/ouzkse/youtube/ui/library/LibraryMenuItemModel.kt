@@ -2,7 +2,7 @@ package android.app.ouzkse.youtube.ui.library
 
 import android.os.Parcelable
 import android.view.View
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class LibraryMenuItemModel(

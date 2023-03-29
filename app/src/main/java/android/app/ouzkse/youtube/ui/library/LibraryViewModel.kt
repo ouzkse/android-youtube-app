@@ -2,9 +2,11 @@ package android.app.ouzkse.youtube.ui.library
 
 import android.app.ouzkse.youtube.data.base.BaseViewModel
 import android.app.ouzkse.youtube.data.repository.YouTubeRepository
-import androidx.hilt.lifecycle.ViewModelInject
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class LibraryViewModel @ViewModelInject constructor(
+@HiltViewModel
+class LibraryViewModel @Inject constructor(
     private val repository: YouTubeRepository
 ) : BaseViewModel() {
 

@@ -10,8 +10,8 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,13 +19,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object ApplicationModule {
 
     @ApiKey
     @Provides
     @Singleton
-    fun provideApiKey() = "AIzaSyAhjqd7qzE9XGVMt0jgSxlrx5nHEdJa7ns"
+    fun provideApiKey() = BuildConfig.API_KEY
 
     @BaseUrl
     @Provides

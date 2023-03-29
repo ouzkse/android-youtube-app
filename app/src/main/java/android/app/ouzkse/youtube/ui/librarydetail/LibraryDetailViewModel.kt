@@ -5,14 +5,16 @@ import android.app.ouzkse.youtube.data.model.Item
 import android.app.ouzkse.youtube.data.repository.YouTubeRepository
 import android.app.ouzkse.youtube.ui.common.LibraryMenuItemIds
 import android.app.ouzkse.youtube.ui.library.LibraryMenuItemModel
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.map
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LibraryDetailViewModel @ViewModelInject constructor(
+@HiltViewModel
+class LibraryDetailViewModel @Inject constructor(
     private val repository: YouTubeRepository
 ) : BaseViewModel() {
 
