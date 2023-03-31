@@ -40,14 +40,13 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val argument = DetailFragmentArgs.fromBundle(requireArguments()).itemArg
 
         binding.viewModel = viewModel
@@ -64,14 +63,14 @@ class DetailFragment : Fragment() {
 
         viewLifecycleOwner.lifecycle.addObserver(playerView)
 
-        viewModel.item.observe(viewLifecycleOwner, Observer { item ->
+        viewModel.item.observe(viewLifecycleOwner) { item ->
 
             playerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     youTubePlayer.cueVideo(item.id.videoId, 0F)
                 }
             })
-        })
+        }
     }
 
     override fun onDestroy() {

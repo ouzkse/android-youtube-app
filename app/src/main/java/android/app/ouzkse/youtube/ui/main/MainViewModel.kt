@@ -6,18 +6,17 @@ import android.app.ouzkse.youtube.data.model.Item
 import android.app.ouzkse.youtube.data.repository.YouTubeRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: YouTubeRepository
 ) : BaseViewModel() {
 
-    private val _loadingStatus = MutableLiveData<Boolean>(true)
+    private val _loadingStatus = MutableLiveData(true)
     val loadingStatus: LiveData<Boolean>
         get() = _loadingStatus
 
@@ -58,7 +57,7 @@ class MainViewModel @Inject constructor(
     private fun saveItems(items: List<Item>?) {
         items?.let {
             val currentList = if (_items.value == null) {
-                arrayListOf<Item>()
+                arrayListOf()
             } else {
                 arrayListOf<Item>().apply {
                     addAll(_items.value as ArrayList)

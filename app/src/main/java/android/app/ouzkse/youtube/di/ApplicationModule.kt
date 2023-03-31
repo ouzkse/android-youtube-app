@@ -12,6 +12,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -70,8 +72,9 @@ object ApplicationModule {
     @Singleton
     fun provideYouTubeRepository(
         remoteDataSource: YouTubeRemoteDataSource,
-        youTubeDao: YouTubeDao
-    ): YouTubeRepository = YouTubeRepository(remoteDataSource, youTubeDao)
+        youTubeDao: YouTubeDao,
+        @DefaultDispatcher dispatcher: CoroutineDispatcher
+    ): YouTubeRepository = YouTubeRepository(remoteDataSource, youTubeDao, dispatcher)
 
     @Provides
     @Singleton
@@ -82,4 +85,8 @@ object ApplicationModule {
     @Provides
     @Singleton
     fun provideYouTubeDao(database: YouTubeRoomDatabase): YouTubeDao = database.youtubeDao()
+
+    @Provides
+    @DefaultDispatcher
+    fun provideDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
 }

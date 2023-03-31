@@ -5,6 +5,7 @@ import android.app.ouzkse.youtube.data.model.Item
 import android.app.ouzkse.youtube.data.repository.YouTubeRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

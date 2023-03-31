@@ -19,7 +19,6 @@ import androidx.activity.addCallback
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +39,7 @@ class SearchFragment : Fragment(), SearchHistoryItemClickListener, YouTubeItemOn
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val onBackPressedCallback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
             if (viewModel.searchLoadingStatus.value == false) {
                 requireActivity().supportFragmentManager.popBackStack()
             } else {
@@ -53,7 +52,7 @@ class SearchFragment : Fragment(), SearchHistoryItemClickListener, YouTubeItemOn
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSearchBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -62,10 +61,6 @@ class SearchFragment : Fragment(), SearchHistoryItemClickListener, YouTubeItemOn
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
         binding.viewModel = viewModel
 
@@ -138,15 +133,11 @@ class SearchFragment : Fragment(), SearchHistoryItemClickListener, YouTubeItemOn
 
     private fun setObservers() {
 
-        viewModel.searchHistory.observe(viewLifecycleOwner, Observer {
-            searchHistoryAdapter.submitList(it)
-        })
+        viewModel.searchHistory.observe(viewLifecycleOwner, searchHistoryAdapter::submitList)
 
-        viewModel.items.observe(viewLifecycleOwner, Observer {
-            searchResultAdapter.submitList(it)
-        })
+        viewModel.items.observe(viewLifecycleOwner, searchResultAdapter::submitList)
 
-        viewModel.searchLoadingStatus.observe(viewLifecycleOwner, Observer {
+        viewModel.searchLoadingStatus.observe(viewLifecycleOwner) {
             when (it) {
                 false -> {
                     binding.searchField.startIconDrawable = null
@@ -156,7 +147,7 @@ class SearchFragment : Fragment(), SearchHistoryItemClickListener, YouTubeItemOn
                     binding.searchField.setStartIconDrawable(R.drawable.ic_back_24dp)
                 }
             }
-        })
+        }
     }
 
     override fun onClick(historyItem: SearchHistoryModel) {
@@ -200,8 +191,7 @@ class SearchFragment : Fragment(), SearchHistoryItemClickListener, YouTubeItemOn
         popupMenu.show()
     }
 
-    @ExperimentalCoroutinesApi
-    fun setVideoPopupMenuItems(menu: Menu, item: Item) {
+    private fun setVideoPopupMenuItems(menu: Menu, item: Item) {
         menu.apply {
             if (item.isFavourite) this.getItem(ItemMenuConstants.REMOVE_FAV).isVisible = true
             else this.getItem(ItemMenuConstants.ADD_FAV).isVisible = true

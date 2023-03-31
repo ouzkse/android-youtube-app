@@ -34,7 +34,7 @@ class LibraryFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentLibraryBinding.inflate(layoutInflater, container, false)
 
         binding.toolbar.apply {

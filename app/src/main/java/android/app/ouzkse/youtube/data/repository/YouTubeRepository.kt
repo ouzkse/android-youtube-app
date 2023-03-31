@@ -4,8 +4,8 @@ import android.app.ouzkse.youtube.data.local.YouTubeDao
 import android.app.ouzkse.youtube.data.model.Item
 import android.app.ouzkse.youtube.data.model.SearchHistoryModel
 import android.app.ouzkse.youtube.data.remote.YouTubeRemoteDataSource
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import android.app.ouzkse.youtube.di.DefaultDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
@@ -13,35 +13,34 @@ import javax.inject.Inject
 
 class YouTubeRepository @Inject constructor(
     private val remoteDataSource: YouTubeRemoteDataSource,
-    private val localDataSource: YouTubeDao
+    private val localDataSource: YouTubeDao,
+    @DefaultDispatcher private val dispatcher: CoroutineDispatcher
 ) {
 
-    @ExperimentalCoroutinesApi
     fun getPopularVideos(nextPageToken: String = "") = flow {
         emit(remoteDataSource.getPopularVideos(nextPageToken))
-    }.flowOn(Dispatchers.Default)
+    }.flowOn(dispatcher)
 
     fun searchVideos(searchKeyword: String, nextPageToken: String = "") = flow {
         emit(remoteDataSource.searchVideo(nextPageToken, searchKeyword))
-    }.flowOn(Dispatchers.Default)
+    }.flowOn(dispatcher)
 
     fun getLocalVideoInformation() = localDataSource
         .getLocalVideoInformation()
-        .flowOn(Dispatchers.Default)
+        .flowOn(dispatcher)
 
     fun getSearchedItems() = localDataSource
         .getSearchHistoryItems()
-        .flowOn(Dispatchers.Default)
+        .flowOn(dispatcher)
 
     suspend fun saveSearchKeyword(searchModel: SearchHistoryModel) =
         localDataSource.insert(searchModel)
 
-    suspend fun clearSearchHistory() = withContext(Dispatchers.Default) {
+    suspend fun clearSearchHistory() = withContext(dispatcher) {
         localDataSource.clearSearchHistory()
     }
 
-    suspend fun insertOrReplaceItem(item: Item) = withContext(Dispatchers.Default) {
+    suspend fun insertOrReplaceItem(item: Item) = withContext(dispatcher) {
         localDataSource.insert(item)
     }
-
 }

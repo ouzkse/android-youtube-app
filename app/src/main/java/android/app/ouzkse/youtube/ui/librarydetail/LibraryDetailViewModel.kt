@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,11 +27,11 @@ class LibraryDetailViewModel @Inject constructor(
         .getLocalVideoInformation()
         .asLiveData(viewModelScope.coroutineContext)
     val savedVideoInfo: LiveData<List<Item>>
-        get() = _savedVideoInformation.map {
+        get() = _savedVideoInformation.map { list ->
             if (_item.value?.id == LibraryMenuItemIds.FAVOURITE) {
-                it.filter { it.isFavourite }.sortedBy { it.snippet.title }
+                list.filter { it.isFavourite }.sortedBy { it.snippet.title }
             } else {
-                it.filter { it.isWatchLater }.sortedBy { it.snippet.title }
+                list.filter { it.isWatchLater }.sortedBy { it.snippet.title }
             }
         }
 

@@ -8,6 +8,7 @@ import android.app.ouzkse.youtube.data.repository.YouTubeRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,12 +25,12 @@ class SearchViewModel @Inject constructor(
     val searchHistory: LiveData<List<SearchHistoryModel>>
         get() = _searchHistory
 
-    private val _searchLoadingStatus = MutableLiveData<Boolean?>(false)
+    private val _searchLoadingStatus = MutableLiveData(false)
     val searchLoadingStatus: LiveData<Boolean?>
         get() = _searchLoadingStatus
 
-    private val _items = MutableLiveData<List<Item>>()
-    val items: LiveData<List<Item>>
+    private val _items = MutableLiveData<List<Item>?>()
+    val items: LiveData<List<Item>?>
         get() = _items
 
     val listSize: Int
@@ -67,7 +68,7 @@ class SearchViewModel @Inject constructor(
     private fun saveItems(items: List<Item>?) {
         items?.let {
             val currentList = if (_items.value == null) {
-                arrayListOf<Item>()
+                arrayListOf()
             } else {
                 arrayListOf<Item>().apply {
                     addAll(_items.value as ArrayList)

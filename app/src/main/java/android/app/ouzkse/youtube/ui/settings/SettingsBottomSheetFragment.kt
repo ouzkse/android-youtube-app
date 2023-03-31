@@ -22,7 +22,7 @@ class SettingsBottomSheetFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = SettingsBottomSheetLayoutBinding.inflate(
             inflater,
             container,
@@ -31,10 +31,8 @@ class SettingsBottomSheetFragment : BottomSheetDialogFragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(
-        savedInstanceState: Bundle?
-    ) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         (requireDialog() as BottomSheetDialog).dismissWithAnimation = true
         setupSwitchComponents()
     }
@@ -46,7 +44,7 @@ class SettingsBottomSheetFragment : BottomSheetDialogFragment() {
                 else -> true
             }
 
-        binding.switchTheme.setOnCheckedChangeListener { switch, isChecked ->
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
             when (isChecked) {
                 true -> AppThemeHelper.saveTheme(AppCompatDelegate.MODE_NIGHT_YES, requireContext())
                 else -> AppThemeHelper.saveTheme(AppCompatDelegate.MODE_NIGHT_NO, requireContext())

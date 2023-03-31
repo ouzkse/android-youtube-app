@@ -18,7 +18,6 @@ import android.widget.PopupMenu
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +25,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
 class MainFragment : Fragment(), YouTubeItemOnClickListener {
@@ -34,15 +32,13 @@ class MainFragment : Fragment(), YouTubeItemOnClickListener {
     private lateinit var binding: FragmentMainBinding
     private lateinit var adapter: YouTubeRecyclerViewAdapter
 
-    @ExperimentalCoroutinesApi
     private val viewModel: MainViewModel by viewModels()
 
-    @ExperimentalCoroutinesApi
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
 
         binding.viewModel = viewModel
@@ -56,11 +52,6 @@ class MainFragment : Fragment(), YouTubeItemOnClickListener {
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-    }
-
-    @ExperimentalCoroutinesApi
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
         adapter = YouTubeRecyclerViewAdapter(this)
 
@@ -71,14 +62,10 @@ class MainFragment : Fragment(), YouTubeItemOnClickListener {
         setListeners()
     }
 
-    @ExperimentalCoroutinesApi
     private fun setObservers() {
-        viewModel.items.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
-        })
+        viewModel.items.observe(viewLifecycleOwner, adapter::submitList)
     }
 
-    @ExperimentalCoroutinesApi
     private fun setListeners() {
 
         val layoutManager = binding.recyclerView.layoutManager as LinearLayoutManager
@@ -96,7 +83,6 @@ class MainFragment : Fragment(), YouTubeItemOnClickListener {
         })
     }
 
-    @ExperimentalCoroutinesApi
     override fun onItemClick(view: View, item: Item) {
 
         exitTransition = MaterialElevationScale(false)
@@ -108,7 +94,6 @@ class MainFragment : Fragment(), YouTubeItemOnClickListener {
         this.findNavController().navigate(directions, extras)
     }
 
-    @ExperimentalCoroutinesApi
     override fun onItemOptionMenuClick(view: View, item: Item) {
         val popupMenu = PopupMenu(view.context, view)
         popupMenu.menuInflater.inflate(R.menu.menu_video_item, popupMenu.menu)
@@ -130,8 +115,7 @@ class MainFragment : Fragment(), YouTubeItemOnClickListener {
         popupMenu.show()
     }
 
-    @ExperimentalCoroutinesApi
-    fun setVideoPopupMenuItems(menu: Menu, item: Item) {
+    private fun setVideoPopupMenuItems(menu: Menu, item: Item) {
         menu.apply {
             if (item.isFavourite) this.getItem(REMOVE_FAV).isVisible = true
             else this.getItem(ADD_FAV).isVisible = true
