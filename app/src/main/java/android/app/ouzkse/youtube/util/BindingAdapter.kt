@@ -3,32 +3,19 @@ package android.app.ouzkse.youtube.util
 import android.app.ouzkse.youtube.R
 import android.app.ouzkse.youtube.data.model.Item
 import android.app.ouzkse.youtube.ui.common.LibraryMenuItemIds
-import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import coil.Coil
-import coil.api.get
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import coil.load
 
 @BindingAdapter("image")
 fun setImage(imageView: ImageView, item: Item) {
     val url = item.snippet.thumbnails.high.url
-    CoroutineScope(Dispatchers.IO).launch {
-        Log.i("ImageLOADING", "Thread : ${Thread.currentThread().name}")
-        val drawable = Coil.get(url) {
-            allowHardware(false)
-        }
-
-        withContext(Dispatchers.Main) {
-            Log.i("ImageSETTING", "Thread : ${Thread.currentThread().name}")
-            imageView.setImageDrawable(drawable)
-            imageView.adjustViewBounds = true
-            imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-        }
+    imageView.load(url) {
+        allowHardware(false)
+        crossfade(true)
     }
+    imageView.adjustViewBounds = true
+    imageView.scaleType = ImageView.ScaleType.CENTER_CROP
 }
 
 @BindingAdapter("drawableTint")
